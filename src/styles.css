@@ -343,6 +343,14 @@ img { max-width: 100%; display: block; }
   gap: 4px;
   background: var(--color-bg);
   border-top: 1px solid var(--color-border);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 110;
+  max-height: calc(100dvh - 72px);
+  overflow-y: auto;
+  box-shadow: 0 18px 34px rgba(30,58,184,0.16);
 }
 .nav__mobile-menu.is-open { display: flex; }
 .nav__mobile-menu a {

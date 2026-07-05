@@ -39,8 +39,18 @@ export class LandingComponent implements AfterViewInit, OnDestroy {
     const menu = root.querySelector<HTMLElement>('[data-nav-mobile-menu]');
     const burger = root.querySelector<HTMLElement>('[data-nav-burger]');
     if (menu && burger) {
-      on(burger, 'click', () => menu.classList.toggle('is-open'));
-      menu.querySelectorAll('a').forEach((link) => on(link, 'click', () => menu.classList.remove('is-open')));
+      const closeMenu = () => {
+        menu.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+      };
+      on(burger, 'click', () => {
+        const open = menu.classList.toggle('is-open');
+        burger.setAttribute('aria-expanded', String(open));
+      });
+      menu.querySelectorAll('a').forEach((link) => on(link, 'click', closeMenu));
+      on(document, 'keydown', (event) => {
+        if ((event as KeyboardEvent).key === 'Escape') closeMenu();
+      });
     }
 
     const nav = root.querySelector<HTMLElement>('[data-nav]');
