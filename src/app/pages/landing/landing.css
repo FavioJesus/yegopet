@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  :host ::ng-deep .nav__inner > .btn {
+    display: none;
+  }
+
+  :host ::ng-deep .section--bg-brand-green .container {
+    gap: 32px !important;
+  }
+
+  :host ::ng-deep .section--bg-brand-green .container > div {
+    min-width: 0 !important;
+    flex-basis: 100% !important;
+  }
+
+  :host ::ng-deep .section--bg-brand-green svg[width="180"] {
+    width: 120px;
+    height: 120px;
+  }
+}
