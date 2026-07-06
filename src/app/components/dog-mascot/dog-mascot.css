@@ -1,0 +1,126 @@
+:host { display: contents; }
+
+.dog-mascot {
+  position: fixed;
+  left: 16px;
+  bottom: 68px;
+  z-index: 320;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  pointer-events: none;
+  animation: dog-mascot-in .4s cubic-bezier(.16, 1, .3, 1);
+}
+
+.dog-mascot.is-visible { display: flex; }
+
+.dog-mascot__bubble {
+  display: none;
+  position: relative;
+  max-width: 240px;
+  padding: 14px 34px 14px 16px;
+  background: var(--color-bg);
+  border: 2px solid var(--color-blue-chip);
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(30, 58, 184, .22);
+  animation: dog-mascot-in .35s cubic-bezier(.16, 1, .3, 1);
+  pointer-events: auto;
+}
+
+.dog-mascot__bubble.is-visible { display: block; }
+
+.dog-mascot__close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-ink-mute);
+  cursor: pointer;
+}
+
+.dog-mascot__close:hover { background: var(--color-blue-pale); }
+
+.dog-mascot__bubble-link {
+  display: block;
+  color: var(--color-ink);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.dog-mascot__cta { color: var(--color-blue); }
+
+.dog-mascot__tail {
+  position: absolute;
+  bottom: -8px;
+  left: 28px;
+  width: 14px;
+  height: 14px;
+  background: var(--color-bg);
+  border-right: 2px solid var(--color-blue-chip);
+  border-bottom: 2px solid var(--color-blue-chip);
+  transform: rotate(45deg);
+}
+
+.dog-mascot__link {
+  display: block;
+  position: relative;
+  width: 104px;
+  height: 185px;
+  filter: drop-shadow(0 10px 16px rgba(30, 58, 184, .38));
+  pointer-events: auto;
+}
+
+.dog-mascot__canvas { display: block; width: 100%; height: 100%; }
+
+.dog-mascot__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .dog-mascot {
+    left: max(10px, env(safe-area-inset-left));
+    bottom: calc(62px + env(safe-area-inset-bottom));
+    gap: 8px;
+  }
+  .dog-mascot__bubble {
+    box-sizing: border-box;
+    width: min(210px, calc(100vw - 28px));
+    max-width: none;
+    padding: 12px 34px 12px 14px;
+  }
+  .dog-mascot__bubble-link { font-size: 13px; }
+  .dog-mascot__close { width: 32px; height: 32px; top: 3px; right: 4px; }
+  .dog-mascot__link { width: 84px; height: 149px; }
+}
+
+@media (max-width: 360px), (max-height: 620px) {
+  .dog-mascot__bubble {
+    width: min(184px, calc(100vw - 24px));
+    padding-block: 10px;
+  }
+  .dog-mascot__bubble-link { font-size: 12px; }
+  .dog-mascot__link { width: 72px; height: 128px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dog-mascot, .dog-mascot__bubble { animation: none; }
+}
+
+@keyframes dog-mascot-in {
+  from { opacity: 0; transform: translateY(6px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}

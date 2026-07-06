@@ -1,0 +1,15 @@
+<div class="dog-mascot" [class.is-visible]="visible()">
+  <div class="dog-mascot__bubble" [class.is-visible]="bubbleVisible()">
+    <button class="dog-mascot__close" type="button" aria-label="Cerrar mensaje" (click)="dismissBubble($event)">✕</button>
+    <a class="dog-mascot__bubble-link" [href]="message().route ?? whatsappHref" [target]="message().route ? '_self' : '_blank'" rel="noopener" (click)="handleBubbleClick($event)">
+      <span>{{ message().text }}</span><br>
+      <span class="dog-mascot__cta">{{ message().cta }}</span>
+    </a>
+    <div class="dog-mascot__tail"></div>
+  </div>
+
+  <a class="dog-mascot__link" [href]="whatsappHref" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <canvas #canvas class="dog-mascot__canvas"></canvas>
+    <video #video class="dog-mascot__video" src="assets/dog-mascot/dog-run-intro.mp4" muted playsinline preload="auto" (ended)="onVideoEnded()" (timeupdate)="onVideoTimeUpdate()"></video>
+  </a>
+</div>

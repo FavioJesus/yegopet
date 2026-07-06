@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { DogMascotComponent } from '../../components/dog-mascot/dog-mascot';
 
 interface Specialist {
   id: string;
@@ -12,7 +13,7 @@ interface Specialist {
 
 @Component({
   selector: 'app-landing',
-  imports: [RouterLink],
+  imports: [RouterLink, DogMascotComponent],
   templateUrl: './landing.html',
   styleUrl: './landing.css',
 })
